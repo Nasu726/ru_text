@@ -39,9 +39,9 @@ Why (この用途):
 失敗しそうな部分 (事前の注記):
   1. 本スクリプトはCEFRレベルを判定するためのものではない。主目的は、
      大量生成した一般向け文章から語彙候補を抽出・集計することにある。
-     一方、形動詞・副動詞や名詞・数詞の格変化はB1〜B2付近の学習で重要で、
-     lemmaだけでは出現状況が見えなくなるため、verb_form / case を明示的に
-     分類して統計上も別項目として残す。
+     一方、形動詞・副動詞や名詞・形容詞・数詞の格変化はB1〜B2付近の
+     学習で重要である。形動詞・副動詞は verb_form ごとに行を分けて集計し、
+     格は同じlemmaを分裂させないよう case_counts に格別頻度をまとめる。
   2. Stanzaは文単位でパイプラインを回すため、大量の文章を処理する際は
      GPUが無い環境だとCPU推論がそれなりに遅い可能性がある。まずは
      少量(パイロット規模)で実行時間を確認してから本番スケールに
@@ -61,16 +61,17 @@ Why (この用途):
      verb_form=Conv/Partでタグ付けされた語をいくつか無作為抽出して
      目視確認することを推奨する。
 
-Why lemma単位ではなく (lemma, upos, verb_form, case) 単位で集計するのか:
-  ユーザー指摘により追加。деепричастие(副動詞)やпричастие(形動詞)は
-  UD(Universal Dependencies)のレンマ化では定動詞と同じレンマに正規化される
-  (例: "читая"(副動詞)も"читать"(不定形)もlemmaは"читать")。そのため
-  lemmaだけで集計すると、副動詞・形動詞が実際に出現したという事実が
-  消えてしまう。Stanzaは`word.feats`にUD素性文字列(例: "VerbForm=Conv"が
-  副動詞、"VerbForm=Part"が形動詞、"Case=Gen"が生格など)を返すため、
-  これを解析して verb_form / case を別列として残し、名詞・数詞の格変化や
-  動詞の格支配(前置詞+格)がどの程度出現したかを後から集計・確認できる
-  ようにする。
+Why (lemma, upos, verb_form) 単位で集計し、caseは集約するのか:
+  деепричастие(副動詞)やпричастие(形動詞)はUD(Universal Dependencies)の
+  レンマ化では定動詞と同じレンマに正規化される(例: "читая"(副動詞)も
+  "читать"(不定形)もlemmaは"читать")。そのため verb_form は集計キーに残し、
+  副動詞・形動詞が実際に出現したという事実を統計上明確にする。
+
+  一方、Caseまで集計キーにすると "новый / нового / новому" のような
+  単なる格変化が同じlemmaの複数行に分裂し、語彙リストとして扱いにくくなる。
+  そこでCaseはキーから外し、各 (lemma, upos, verb_form) 行の case_counts に
+  格別の出現回数を集約する。これにより語彙の重複を避けつつ、名詞・形容詞・
+  数詞などの格変化がどの程度現れたかは統計として保持できる。
 """
 
 from __future__ import annotations
@@ -170,24 +171,41 @@ def main() -> None:
     passages = load_passages(args.input_text)
     print(f"[input] {len(passages)} パッセージを読み込みました", file=sys.stderr)
 
-    # Why (lemma, upos, verb_form, case) をキーにするか: モジュールdocstring
-    # 参照。同じlemmaでも「定動詞として」「副動詞として」「形動詞として」出た
-    # 回数を別々に数えられるようにする。
-    agg: dict[tuple[str, str, str, str], dict] = {}
+    # verb_form は副動詞・形動詞を統計上分離するためキーに残す。
+    # case は同じlemmaを格ごとに別行へ分裂させないため、行内のcase_countsに集約する。
+    agg: dict[tuple[str, str, str], dict] = {}
     for i, passage in enumerate(passages, start=1):
         for w in lemmatizer.analyze(passage):
-            key = (w["lemma"], w["upos"], w["verb_form"], w["case"])
+            key = (w["lemma"], w["upos"], w["verb_form"])
             if key not in agg:
-                agg[key] = {"count": 0, "example_wordform": w["wordform"]}
+                agg[key] = {
+                    "count": 0,
+                    "case_counts": {},
+                    "example_wordform": w["wordform"],
+                }
             agg[key]["count"] += 1
+            if w["case"]:
+                case_counts = agg[key]["case_counts"]
+                case_counts[w["case"]] = case_counts.get(w["case"], 0) + 1
         if i % 50 == 0:
             print(f"[progress] {i}/{len(passages)} パッセージ処理済み", file=sys.stderr)
 
     with args.out.open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["lemma", "upos", "verb_form", "case", "example_wordform", "count"])
-        for (lemma, upos, verb_form, case), d in sorted(agg.items(), key=lambda kv: -kv[1]["count"]):
-            writer.writerow([lemma, upos, verb_form, case, d["example_wordform"], d["count"]])
+        writer.writerow(["lemma", "upos", "verb_form", "case_counts", "example_wordform", "count"])
+        for (lemma, upos, verb_form), d in sorted(agg.items(), key=lambda kv: -kv[1]["count"]):
+            case_counts = "|".join(
+                f"{case}:{count}"
+                for case, count in sorted(d["case_counts"].items())
+            )
+            writer.writerow([
+                lemma,
+                upos,
+                verb_form,
+                case_counts,
+                d["example_wordform"],
+                d["count"],
+            ])
 
     distinct_lemmas = len(set(k[0] for k in agg))
     gerunds = sum(1 for k in agg if k[2] == "Conv")
