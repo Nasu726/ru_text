@@ -36,7 +36,12 @@
 ## ディレクトリ構成
 
 - `data/topics/` — 文章生成用のトピック集
-- `data/generated_texts/` — 生成したロシア語文章
+- `data/generated_texts/passages/` — 生成したロシア語文章。1トピック1ファイル
+  (例: `0001.txt`)のプレーンテキストとして保存する。
+- `data/generated_texts/manifest.csv` — 各`passages/*.txt`がどのカテゴリ・
+  トピック・想定レジスターから生成されたかを記録するメタ情報
+  (列: `id,category,topic,register,filename`)。抽出スクリプトはこのファイルを
+  読まない(後述)。
 - `scripts/` — 語彙抽出用のスクリプト
 
 ## 抽出結果の形式
@@ -53,16 +58,25 @@
 `Acc:4|Gen:3|Nom:8` のように保存する。これにより1単語1行に近い見通しを
 保ちながら、名詞・形容詞・数詞などの格変化を統計上確認できる。
 `example_wordform` にはその分類で実際に出現した語形を1つ保存する。
-必要に応じて `data/generated_texts/ru_generated_texts.csv` の元文章を参照し、
-格支配を含む具体的な用法や文脈を確認する。
+必要に応じて `data/generated_texts/passages/` の元ファイルと
+`data/generated_texts/manifest.csv` を参照し、格支配を含む具体的な用法や
+文脈、どのトピックから来た語かを確認する。
 
 ## 生成文章の置き場所と分量の目安
 
-- 出力先: `data/generated_texts/ru_generated_texts.csv`
-  (列: `category,topic,register,text`)。
-  CSVにすることで、どのカテゴリ・トピック・想定レジスターから生成された文章かを
-  後から追跡できる。デバッグや、特定トピックだけ生成量を増やしたい場合の
-  絞り込みにも利用する。
+- 出力先: `data/generated_texts/passages/0001.txt`のような、1トピック1ファイルの
+  プレーンテキスト。CSVの1列に本文を入れる形式も検討したが、カンマ・改行を含む
+  自然文をCSVの1フィールドとして扱うと(csvモジュールで技術的には正しく
+  クォートされるとはいえ)人間が直接編集する際にクォート規則を意識する必要が
+  生じ、gitの差分も1トピックの変更が他行に影響して見えにくくなる。1トピック
+  1ファイルなら常にプレーンテキストとして開け、差分も1ファイルに閉じるため
+  こちらを採用する。
+- 出自の記録: `data/generated_texts/manifest.csv`
+  (列: `id,category,topic,register,filename`)に、どの`passages/*.txt`が
+  どのカテゴリ・トピック・想定レジスターから生成されたかを記録する。
+  デバッグや、特定トピックだけ生成量を増やしたい場合の絞り込みに利用する。
+  抽出スクリプト(`extract_vocabulary_stanza.py`)は`passages/`配下の本文だけを
+  読み、このmanifestは読まない(生成側のメタ情報と抽出処理の責務を分離する)。
 - 分量の目安: 1トピックあたり100〜150語程度から始める。
   文章そのものの完成度ではなく語彙候補の発見が目的なので、まず実際に生成して
   異なりlemma数と語彙の広がりを測定し、不足していればトピック数または

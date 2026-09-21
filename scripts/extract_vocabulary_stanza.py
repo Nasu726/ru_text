@@ -46,10 +46,21 @@ Why (この用途):
      GPUが無い環境だとCPU推論がそれなりに遅い可能性がある。まずは
      少量(パイロット規模)で実行時間を確認してから本番スケールに
      進めることを推奨する。
-  3. 入力は `data/generated_texts/ru_generated_texts.csv`
-     (列: category,topic,register,text) を前提とする。生成文の由来
-     (どのトピックから出たか)を後から追えるようにするため、単なる
-     プレーンテキストではなくCSVにしている。
+  3. 入力は `data/generated_texts/passages/` 以下の1トピック1ファイルの
+     プレーンテキスト(*.txt)を前提とする。
+
+     Why CSVの単一text列ではなくtxtファイル分割にしたのか:
+       当初はCSVの1列にテキスト本文を入れる形式を検討したが、
+       (a) 本文中のカンマ・改行はcsvモジュールが正しくクォート処理する
+           ため技術的には安全である一方、(b) 人間(ユーザーや別のLLM)が
+           内容を直接開いて読む・手直しする場面でクォート規則を意識せず
+           済むこと、(c) gitの差分が1トピック=1ファイルに閉じて
+           レビューしやすいこと、を優先してtxtファイル分割に変更した。
+       トピック・カテゴリ・レジスターの出自情報は
+       `data/generated_texts/manifest.csv` (列: id,category,topic,
+       register,filename) に別途保存する。本抽出スクリプトはこの
+       manifestを読まない(SRP: 抽出処理は本文のみを対象とし、
+       生成側のメタ情報には関知しない)。
   4. VerbForm=Conv/Part の判定は、SynTagRus(ロシア語UDツリーバンク)から
      学習した統計的タガーによる推論であり、辞書引きやルールベースの
      決め打ちではない。そのため以下のような境界事例で誤判定しうる:
@@ -84,17 +95,17 @@ from pathlib import Path
 import stanza
 
 
-def load_passages(path: Path) -> list[str]:
-    """`data/generated_texts/ru_generated_texts.csv` 形式のCSVから
-    text列(生成文章本文)だけを取り出してリストで返す。
+def load_passages(passages_dir: Path) -> list[str]:
+    """`passages_dir` 直下の *.txt ファイルを1つ1パッセージとして読み込む。
 
-    Why CSVから読むのか: モジュールdocstring(失敗しそうな部分 3)参照。
-    category/topic/register列は本抽出処理では使わないが、ファイル自体には
-    残しておく(生成文の由来を追えるようにするため)。ここではtextだけを
-    使う。
+    Why ディレクトリ内の全txtを対象にするのか: モジュールdocstring
+    (失敗しそうな部分 3)参照。ファイル名の順序に依存しないよう
+    ソートしてから読む(実行結果の再現性のため)。category/topic/register
+    などのメタ情報は `manifest.csv` 側の責務であり、本関数は本文の
+    読み込みのみを行う(SRP)。
     """
-    with path.open("r", encoding="utf-8", newline="") as f:
-        return [row["text"].strip() for row in csv.DictReader(f) if row["text"].strip()]
+    texts = (p.read_text(encoding="utf-8").strip() for p in sorted(passages_dir.glob("*.txt")))
+    return [t for t in texts if t]
 
 
 def parse_feats(feats: str | None) -> dict[str, str]:
@@ -156,9 +167,9 @@ class StanzaLemmatizer:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "input_text", type=Path,
-        help="生成文章CSV(列: category,topic,register,text)。"
-             "既定の置き場所は data/generated_texts/ru_generated_texts.csv",
+        "passages_dir", type=Path,
+        help="1トピック1ファイルのtxtが並ぶディレクトリ。"
+             "既定の置き場所は data/generated_texts/passages/",
     )
     parser.add_argument(
         "--out", type=Path, default=Path("extracted_vocabulary_stanza.csv"),
@@ -168,7 +179,7 @@ def main() -> None:
 
     print("[setup] Stanzaパイプラインを初期化中(初回はモデルダウンロードが発生します)...", file=sys.stderr)
     lemmatizer = StanzaLemmatizer()
-    passages = load_passages(args.input_text)
+    passages = load_passages(args.passages_dir)
     print(f"[input] {len(passages)} パッセージを読み込みました", file=sys.stderr)
 
     # verb_form は副動詞・形動詞を統計上分離するためキーに残す。
