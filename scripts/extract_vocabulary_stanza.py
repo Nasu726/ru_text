@@ -48,6 +48,17 @@ Why (この用途):
      実際に大量生成した文章をどう保存するかはまだ決まっていないため、
      このスクリプトの load_passages() を実際のファイル形式に合わせて
      書き換える必要がある可能性が高い。
+
+Why lemma単位ではなく (lemma, upos, verb_form, case) 単位で集計するのか:
+  ユーザー指摘により追加。деепричастие(副動詞)やпричастие(形動詞)は
+  UD(Universal Dependencies)のレンマ化では定動詞と同じレンマに正規化される
+  (例: "читая"(副動詞)も"читать"(不定形)もlemmaは"читать")。そのため
+  lemmaだけで集計すると、副動詞・形動詞が実際に出現したという事実が
+  消えてしまう。Stanzaは`word.feats`にUD素性文字列(例: "VerbForm=Conv"が
+  副動詞、"VerbForm=Part"が形動詞、"Case=Gen"が生格など)を返すため、
+  これを解析して verb_form / case を別列として残し、名詞・数詞の格変化や
+  動詞の格支配(前置詞+格)がどの程度出現したかを後から集計・確認できる
+  ようにする。
 """
 
 from __future__ import annotations
@@ -69,6 +80,24 @@ def load_passages(path: Path) -> list[str]:
         return [line.strip() for line in f if line.strip()]
 
 
+def parse_feats(feats: str | None) -> dict[str, str]:
+    """UD素性文字列("Case=Gen|Number=Sing|...")を辞書に分解する。
+
+    Why: Stanzaは feats を1本のパイプ区切り文字列で返すため、
+    verb_form(=VerbForm)やcase(=Case)だけを個別列として取り出すために
+    毎回パースする。feats が None または空文字列の場合は空辞書を返す
+    (助詞・接続詞など、格や態を持たない品詞では feats が空になる)。
+    """
+    if not feats:
+        return {}
+    result = {}
+    for pair in feats.split("|"):
+        if "=" in pair:
+            key, value = pair.split("=", 1)
+            result[key] = value
+    return result
+
+
 class StanzaLemmatizer:
     """Stanzaパイプラインの初期化とレンマ化のみを担当する薄いラッパー。"""
 
@@ -83,15 +112,27 @@ class StanzaLemmatizer:
             verbose=False,
         )
 
-    def lemmatize(self, text: str) -> list[tuple[str, str]]:
-        """(lemma, upos) のリストを返す。句読点等はスキップする。"""
+    def analyze(self, text: str) -> list[dict]:
+        """1語ごとに lemma/upos/verb_form/case/wordform を持つ辞書のリストを返す。
+        句読点・記号・未分類トークンはスキップする。
+
+        Why verb_form/case を個別に取り出すか: モジュールdocstring参照
+        (副動詞・形動詞はlemmaだけでは判別できないため)。
+        """
         doc = self._pipeline(text)
         result = []
         for sentence in doc.sentences:
             for word in sentence.words:
                 if word.upos in ("PUNCT", "SYM", "X"):
                     continue
-                result.append((word.lemma.lower(), word.upos))
+                feats = parse_feats(word.feats)
+                result.append({
+                    "lemma": word.lemma.lower(),
+                    "upos": word.upos,
+                    "verb_form": feats.get("VerbForm", ""),
+                    "case": feats.get("Case", ""),
+                    "wordform": word.text,
+                })
         return result
 
 
@@ -109,22 +150,31 @@ def main() -> None:
     passages = load_passages(args.input_text)
     print(f"[input] {len(passages)} パッセージを読み込みました", file=sys.stderr)
 
-    lemma_data: dict[str, dict] = {}
+    # Why (lemma, upos, verb_form, case) をキーにするか: モジュールdocstring
+    # 参照。同じlemmaでも「定動詞として」「副動詞として」「形動詞として」出た
+    # 回数を別々に数えられるようにする。
+    agg: dict[tuple[str, str, str, str], dict] = {}
     for i, passage in enumerate(passages, start=1):
-        for lemma, upos in lemmatizer.lemmatize(passage):
-            if lemma not in lemma_data:
-                lemma_data[lemma] = {"upos": upos, "count": 0}
-            lemma_data[lemma]["count"] += 1
+        for w in lemmatizer.analyze(passage):
+            key = (w["lemma"], w["upos"], w["verb_form"], w["case"])
+            if key not in agg:
+                agg[key] = {"count": 0, "example_wordform": w["wordform"]}
+            agg[key]["count"] += 1
         if i % 50 == 0:
             print(f"[progress] {i}/{len(passages)} パッセージ処理済み", file=sys.stderr)
 
     with args.out.open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["lemma", "upos", "count"])
-        for lemma, d in sorted(lemma_data.items(), key=lambda kv: -kv[1]["count"]):
-            writer.writerow([lemma, d["upos"], d["count"]])
+        writer.writerow(["lemma", "upos", "verb_form", "case", "example_wordform", "count"])
+        for (lemma, upos, verb_form, case), d in sorted(agg.items(), key=lambda kv: -kv[1]["count"]):
+            writer.writerow([lemma, upos, verb_form, case, d["example_wordform"], d["count"]])
 
-    print(f"\n総抽出語数(異なり語数): {len(lemma_data)}")
+    distinct_lemmas = len(set(k[0] for k in agg))
+    gerunds = sum(1 for k in agg if k[2] == "Conv")
+    participles = sum(1 for k in agg if k[2] == "Part")
+    print(f"\n総抽出語数(異なりlemma数): {distinct_lemmas}")
+    print(f"副動詞(деепричастие, VerbForm=Conv)として出現したlemma×形の組: {gerunds}")
+    print(f"形動詞(причастие, VerbForm=Part)として出現したlemma×形の組: {participles}")
     print(f"wrote {args.out}")
 
 

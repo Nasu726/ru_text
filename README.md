@@ -17,6 +17,16 @@
 - `data/topics/` — 文章生成用のトピック集
 - `scripts/` — 語彙抽出用のスクリプト
 
+## 抽出結果の形式
+
+`scripts/extract_vocabulary_stanza.py` の出力は `lemma,upos,verb_form,case,
+example_wordform,count` の列を持つ。lemma単位ではなく `(lemma, upos,
+verb_form, case)` 単位で集計しているため、同じ動詞でも定動詞・副動詞
+(деепричастие, verb_form=Conv)・形動詞(причастие, verb_form=Part)として
+出現した回数を別々に確認できる。同様に名詞・数詞がどの格(case)で
+出現したかも残るため、格支配や数詞の格変化がどの程度カバーされているかを
+後から集計できる。
+
 ## 実行環境についての注意
 
 `scripts/extract_vocabulary_stanza.py` は Stanza(PyTorchベース、未知語耐性が高い)を
