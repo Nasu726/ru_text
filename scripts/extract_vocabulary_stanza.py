@@ -44,10 +44,20 @@ Why (この用途):
      GPUが無い環境だとCPU推論がそれなりに遅い可能性がある。まずは
      少量(パイロット規模)で実行時間を確認してから本番スケールに
      進めることを推奨する。
-  3. 入力テキストファイルの想定形式は「1行1パッセージ」のプレーンテキスト。
-     実際に大量生成した文章をどう保存するかはまだ決まっていないため、
-     このスクリプトの load_passages() を実際のファイル形式に合わせて
-     書き換える必要がある可能性が高い。
+  3. 入力は `data/generated_texts/ru_generated_texts.csv`
+     (列: category,topic,register,text) を前提とする。生成文の由来
+     (どのトピックから出たか)を後から追えるようにするため、単なる
+     プレーンテキストではなくCSVにしている。
+  4. VerbForm=Conv/Part の判定は、SynTagRus(ロシア語UDツリーバンク)から
+     学習した統計的タガーによる推論であり、辞書引きやルールベースの
+     決め打ちではない。そのため以下のような境界事例で誤判定しうる:
+     形容詞化した形動詞(例: "блестящий"が独立した形容詞的な意味で
+     使われる場合)、副詞化した副動詞(例: "молча")、述語的に使われる
+     短語尾形動詞と述語形容詞の混同、そしてAI生成文の言い回しが
+     SynTagRusの学習データ(新聞・小説等の伝統的な書き言葉)の分布から
+     大きく外れている場合の精度低下。大量生成したコーパスに対しては、
+     verb_form=Conv/Partでタグ付けされた語をいくつか無作為抽出して
+     目視確認することを推奨する。
 
 Why lemma単位ではなく (lemma, upos, verb_form, case) 単位で集計するのか:
   ユーザー指摘により追加。деепричастие(副動詞)やпричастие(形動詞)は
@@ -72,12 +82,16 @@ import stanza
 
 
 def load_passages(path: Path) -> list[str]:
-    """1行1パッセージのプレーンテキストを読む。
-    Why: 生成文章の保存形式が未確定のため、まずは最も単純な形式を仮定する。
-    実際の生成パイプラインが固まったら、この関数だけを差し替えればよい。
+    """`data/generated_texts/ru_generated_texts.csv` 形式のCSVから
+    text列(生成文章本文)だけを取り出してリストで返す。
+
+    Why CSVから読むのか: モジュールdocstring(失敗しそうな部分 3)参照。
+    category/topic/register列は本抽出処理では使わないが、ファイル自体には
+    残しておく(生成文の由来を追えるようにするため)。ここではtextだけを
+    使う。
     """
-    with path.open("r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
+    with path.open("r", encoding="utf-8", newline="") as f:
+        return [row["text"].strip() for row in csv.DictReader(f) if row["text"].strip()]
 
 
 def parse_feats(feats: str | None) -> dict[str, str]:
@@ -138,7 +152,11 @@ class StanzaLemmatizer:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("input_text", type=Path, help="1行1パッセージのプレーンテキストファイル")
+    parser.add_argument(
+        "input_text", type=Path,
+        help="生成文章CSV(列: category,topic,register,text)。"
+             "既定の置き場所は data/generated_texts/ru_generated_texts.csv",
+    )
     parser.add_argument(
         "--out", type=Path, default=Path("extracted_vocabulary_stanza.csv"),
         help="出力CSVのパス",
