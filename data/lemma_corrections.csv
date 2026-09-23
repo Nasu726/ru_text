@@ -1,0 +1,622 @@
+stanza_lemma,stanza_upos,wordform,action,lemma,upos,note
+авиаперелет,NOUN,,replace,авиаперелёт,NOUN,ё
+актер,NOUN,,replace,актёр,NOUN,ё
+актерский,ADJ,,replace,актёрский,ADJ,ё
+белье,NOUN,,replace,бельё,NOUN,ё
+береза,NOUN,,replace,берёза,NOUN,ё
+березовый,ADJ,,replace,берёзовый,ADJ,ё
+вареный,ADJ,,replace,варёный,ADJ,ё
+веревка,NOUN,,replace,верёвка,NOUN,ё
+веселый,ADJ,,replace,весёлый,ADJ,ё
+взлет,NOUN,,replace,взлёт,NOUN,ё
+вовлеченность,NOUN,,replace,вовлечённость,NOUN,ё
+волонтер,NOUN,,replace,волонтёр,NOUN,ё
+волонтерский,ADJ,,replace,волонтёрский,ADJ,ё
+вперед,ADV,,replace,вперёд,ADV,ё
+врожденный,ADJ,,replace,врождённый,ADJ,ё
+всерьез,ADV,,replace,всерьёз,ADV,ё
+втроем,ADV,,replace,втроём,ADV,ё
+далекий,ADJ,,replace,далёкий,ADJ,ё
+дергаться,VERB,,replace,дёргаться,VERB,ё
+дешево,ADV,,replace,дёшево,ADV,ё
+дешевый,ADJ,,replace,дешёвый,ADJ,ё
+договоренность,NOUN,,replace,договорённость,NOUN,ё
+ее,DET,,replace,её,DET,ё
+еж,NOUN,,replace,ёж,NOUN,ё
+еще,ADV,,replace,ещё,ADV,ё
+желтый,ADJ,,replace,жёлтый,ADJ,ё
+жесткий,ADJ,,replace,жёсткий,ADJ,ё
+жестко,ADV,,replace,жёстко,ADV,ё
+жилье,NOUN,,replace,жильё,NOUN,ё
+заем,NOUN,,replace,заём,NOUN,ё
+заемный,ADJ,,replace,заёмный,ADJ,ё
+замерзнуть,VERB,,replace,замёрзнуть,VERB,ё
+застежка,NOUN,,replace,застёжка,NOUN,ё
+зачет,NOUN,,replace,зачёт,NOUN,ё
+звездный,ADJ,,replace,звёздный,ADJ,ё
+зеленый,ADJ,,replace,зелёный,ADJ,ё
+киноактер,NOUN,,replace,киноактёр,NOUN,ё
+клен,NOUN,,replace,клён,NOUN,ё
+ковалев,PROPN,,replace,ковалёв,PROPN,ё
+ковер,NOUN,,replace,ковёр,NOUN,ё
+конек,NOUN,,replace,конёк,NOUN,ё
+королев,PROPN,,replace,королёв,PROPN,ё
+костер,NOUN,,replace,костёр,NOUN,ё
+котенок,NOUN,,replace,котёнок,NOUN,ё
+кошелек,NOUN,,replace,кошелёк,NOUN,ё
+кремлевский,ADJ,,replace,кремлёвский,ADJ,ё
+легкий,ADJ,,replace,лёгкий,ADJ,ё
+лед,NOUN,,replace,лёд,NOUN,ё
+летный,ADJ,,replace,лётный,ADJ,ё
+летчик,NOUN,,replace,лётчик,NOUN,ё
+мед,NOUN,,replace,мёд,NOUN,ё
+мерзлый,ADJ,,replace,мёрзлый,ADJ,ё
+мертвый,ADJ,,replace,мёртвый,ADJ,ё
+молодежный,ADJ,,replace,молодёжный,ADJ,ё
+надежно,ADV,,replace,надёжно,ADV,ё
+надежный,ADJ,,replace,надёжный,ADJ,ё
+наем,NOUN,,replace,наём,NOUN,ё
+намек,NOUN,,replace,намёк,NOUN,ё
+наперед,ADV,,replace,наперёд,ADV,ё
+напряженный,ADJ,,replace,напряжённый,ADJ,ё
+населенный,ADJ,,replace,населённый,ADJ,ё
+недешевый,ADJ,,replace,недешёвый,ADJ,ё
+незамерзший,ADJ,,replace,незамёрзший,ADJ,ё
+неопределенность,NOUN,,replace,неопределённость,NOUN,ё
+нерешенный,ADJ,,replace,нерешённый,ADJ,ё
+неудовлетворенный,ADJ,,replace,неудовлетворённый,ADJ,ё
+нечетный,ADJ,,replace,нечётный,ADJ,ё
+обертка,NOUN,,replace,обёртка,NOUN,ё
+обобщенно,ADV,,replace,обобщённо,ADV,ё
+объем,NOUN,,replace,объём,NOUN,ё
+объемный,ADJ,,replace,объёмный,ADJ,ё
+определенный,ADJ,,replace,определённый,ADJ,ё
+осведомленность,NOUN,,replace,осведомлённость,NOUN,ё
+отвертка,NOUN,,replace,отвёртка,NOUN,ё
+отдаленный,ADJ,,replace,отдалённый,ADJ,ё
+отчет,NOUN,,replace,отчёт,NOUN,ё
+партнер,NOUN,,replace,партнёр,NOUN,ё
+перекочевка,NOUN,,replace,перекочёвка,NOUN,ё
+перекресток,NOUN,,replace,перекрёсток,NOUN,ё
+перелет,NOUN,,replace,перелёт,NOUN,ё
+пес,NOUN,,replace,пёс,NOUN,ё
+пестрый,ADJ,,replace,пёстрый,ADJ,ё
+петр,PROPN,,replace,пётр,PROPN,ё
+платеж,NOUN,,replace,платёж,NOUN,ё
+платежный,ADJ,,replace,платёжный,ADJ,ё
+пленочный,ADJ,,replace,плёночный,ADJ,ё
+плетеный,ADJ,,replace,плетёный,ADJ,ё
+подсчет,NOUN,,replace,подсчёт,NOUN,ё
+подчеркивать,VERB,,replace,подчёркивать,VERB,ё
+подъем,NOUN,,replace,подъём,NOUN,ё
+полет,NOUN,,replace,полёт,NOUN,ё
+поселок,NOUN,,replace,посёлок,NOUN,ё
+потек,NOUN,,replace,потёк,NOUN,ё
+прием,NOUN,,replace,приём,NOUN,ё
+промерзнуть,VERB,,replace,промёрзнуть,VERB,ё
+протяженность,NOUN,,replace,протяжённость,NOUN,ё
+протяженный,ADJ,,replace,протяжённый,ADJ,ё
+прощеный,ADJ,,replace,прощёный,ADJ,ё
+пятерка,NOUN,,replace,пятёрка,NOUN,ё
+разобщенность,NOUN,,replace,разобщённость,NOUN,ё
+разъемный,ADJ,,replace,разъёмный,ADJ,ё
+расчет,NOUN,,replace,расчёт,NOUN,ё
+расчетный,ADJ,,replace,расчётный,ADJ,ё
+ребенок,NOUN,,replace,ребёнок,NOUN,ё
+режиссер,NOUN,,replace,режиссёр,NOUN,ё
+рублев,PROPN,,replace,рублёв,PROPN,ё
+самолет,NOUN,,replace,самолёт,NOUN,ё
+самоотчет,NOUN,,replace,самоотчёт,NOUN,ё
+свекла,NOUN,,replace,свёкла,NOUN,ё
+селедка,NOUN,,replace,селёдка,NOUN,ё
+сережа,PROPN,,replace,серёжа,PROPN,ё
+серьезно,ADV,,replace,серьёзно,ADV,ё
+серьезный,ADJ,,replace,серьёзный,ADJ,ё
+скулеж,NOUN,,replace,скулёж,NOUN,ё
+соленый,ADJ,,replace,солёный,ADJ,ё
+стертый,ADJ,,replace,стёртый,ADJ,ё
+счет,NOUN,,replace,счёт,NOUN,ё
+счетчик,NOUN,,replace,счётчик,NOUN,ё
+съемка,NOUN,,replace,съёмка,NOUN,ё
+съемный,ADJ,,replace,съёмный,ADJ,ё
+сырье,NOUN,,replace,сырьё,NOUN,ё
+твердо,ADV,,replace,твёрдо,ADV,ё
+твердый,ADJ,,replace,твёрдый,ADJ,ё
+темно-синий,ADJ,,replace,тёмно-синий,ADJ,ё
+темный,ADJ,,replace,тёмный,ADJ,ё
+теплый,ADJ,,replace,тёплый,ADJ,ё
+терка,NOUN,,replace,тёрка,NOUN,ё
+тетя,NOUN,,replace,тётя,NOUN,ё
+теща,NOUN,,replace,тёща,NOUN,ё
+тренажер,NOUN,,replace,тренажёр,NOUN,ё
+трехмерный,ADJ,,replace,трёхмерный,ADJ,ё
+тушенка,NOUN,,replace,тушёнка,NOUN,ё
+тяжелый,ADJ,,replace,тяжёлый,ADJ,ё
+удаленка,NOUN,,replace,удалёнка,NOUN,ё
+удаленный,ADJ,,replace,удалённый,ADJ,ё
+удивленно,ADV,,replace,удивлённо,ADV,ё
+учеба,NOUN,,replace,учёба,NOUN,ё
+ученый,NOUN,,replace,учёный,NOUN,ё
+учет,NOUN,,replace,учёт,NOUN,ё
+учетный,ADJ,,replace,учётный,ADJ,ё
+федорович,PROPN,,replace,фёдорович,PROPN,ё
+хрущевка,NOUN,,replace,хрущёвка,NOUN,ё
+челка,NOUN,,replace,чёлка,NOUN,ё
+черный,ADJ,,replace,чёрный,ADJ,ё
+черствый,ADJ,,replace,чёрствый,ADJ,ё
+четвертый,ADJ,,replace,четвёртый,ADJ,ё
+четкий,ADJ,,replace,чёткий,ADJ,ё
+четный,ADJ,,replace,чётный,ADJ,ё
+шепот,ADV,,replace,шёпот,ADV,ё
+шепот,NOUN,,replace,шёпот,NOUN,ё
+щетка,NOUN,,replace,щётка,NOUN,ё
+экспортер,NOUN,,replace,экспортёр,NOUN,ё
+жиль,NOUN,,replace,жильё,NOUN,truncated
+белое,NOUN,,replace,бельё,NOUN,from «бельё»
+черт,NOUN,,replace,черта,NOUN,gen. pl. «черт»
+свертывать,VERB,,replace,сворачивать,VERB,wrong verb
+свертывать,VERB,сворачивается,replace,сворачиваться,VERB,wrong verb
+определенный,VERB,,replace,определить,VERB,participle lemma = verb
+проверяемый,VERB,,replace,проверять,VERB,participle lemma = verb
+продуманный,VERB,,replace,продумать,VERB,participle lemma = verb
+выверенный,VERB,,replace,выверить,VERB,participle lemma = verb
+распространенный,ADJ,,replace,распространённый,ADJ,ё
+приглушенный,ADJ,,replace,приглушённый,ADJ,ё
+приглашенный,ADJ,,replace,приглашённый,ADJ,ё
+цветы,NOUN,,replace,цветок,NOUN,plural as lemma
+стихи,NOUN,,replace,стих,NOUN,plural as lemma
+средства,NOUN,,replace,средство,NOUN,plural as lemma
+остатки,NOUN,,replace,остаток,NOUN,plural as lemma
+кроссовки,NOUN,,replace,кроссовка,NOUN,plural as lemma
+кадры,NOUN,,replace,кадр,NOUN,plural as lemma
+басы,NOUN,,replace,бас,NOUN,plural as lemma
+серьги,NOUN,,replace,серьга,NOUN,plural as lemma
+бинты,NOUN,,replace,бинт,NOUN,plural as lemma
+пароли,NOUN,,replace,пароль,NOUN,plural as lemma
+антресоли,NOUN,,replace,антресоль,NOUN,plural as lemma
+войска,NOUN,,replace,войско,NOUN,plural as lemma
+озера,NOUN,,replace,озеро,NOUN,plural as lemma
+озёра,NOUN,,replace,озеро,NOUN,plural as lemma
+кассеты,NOUN,,replace,кассета,NOUN,plural as lemma
+созвездия,NOUN,,replace,созвездие,NOUN,plural as lemma
+мемуар,NOUN,,replace,мемуары,NOUN,pluralia tantum
+макарон,NOUN,,replace,макароны,NOUN,pluralia tantum
+именина,NOUN,,replace,именины,NOUN,pluralia tantum
+посиделка,NOUN,,replace,посиделки,NOUN,pluralia tantum
+щая,NOUN,,replace,щи,NOUN,pluralia tantum
+полотенец,NOUN,,replace,полотенце,NOUN,gen. pl. as lemma
+засух,NOUN,,replace,засуха,NOUN,gen. pl. as lemma
+скидок,NOUN,,replace,скидка,NOUN,gen. pl. as lemma
+медиан,NOUN,,replace,медиана,NOUN,gen. pl. as lemma
+видеоигр,NOUN,,replace,видеоигра,NOUN,gen. pl. as lemma
+мумий,NOUN,,replace,мумия,NOUN,gen. pl. as lemma
+звёзд,NOUN,,replace,звезда,NOUN,gen. pl. as lemma
+парилок,NOUN,,replace,парилка,NOUN,gen. pl. as lemma
+автошкол,NOUN,,replace,автошкола,NOUN,gen. pl. as lemma
+брусник,NOUN,,replace,брусника,NOUN,gen. pl. as lemma
+сметан,NOUN,,replace,сметана,NOUN,gen. pl. as lemma
+догадок,NOUN,,replace,догадка,NOUN,gen. pl. as lemma
+непогод,NOUN,,replace,непогода,NOUN,gen. pl. as lemma
+лактоз,NOUN,,replace,лактоза,NOUN,gen. pl. as lemma
+анкет,NOUN,,replace,анкета,NOUN,gen. pl. as lemma
+отсылок,NOUN,,replace,отсылка,NOUN,gen. pl. as lemma
+темпер,NOUN,,replace,темпера,NOUN,gen. pl. as lemma
+болот,NOUN,,replace,болото,NOUN,gen. pl. as lemma
+рок-групп,NOUN,,replace,рок-группа,NOUN,gen. pl. as lemma
+царапин,NOUN,,replace,царапина,NOUN,gen. pl. as lemma
+стоянок,NOUN,,replace,стоянка,NOUN,gen. pl. as lemma
+вкладок,NOUN,,replace,вкладка,NOUN,gen. pl. as lemma
+улик,NOUN,,replace,улика,NOUN,gen. pl. as lemma
+плёнок,NOUN,,replace,плёнка,NOUN,gen. pl. as lemma
+коленок,NOUN,,replace,коленка,NOUN,gen. pl. as lemma
+синагог,NOUN,,replace,синагога,NOUN,gen. pl. as lemma
+уловок,NOUN,,replace,уловка,NOUN,gen. pl. as lemma
+вельмож,NOUN,,replace,вельможа,NOUN,gen. pl. as lemma
+рыбок,NOUN,,replace,рыбка,NOUN,gen. pl. as lemma
+пряж,NOUN,,replace,пряжа,NOUN,gen. pl. as lemma
+коровок,NOUN,,replace,коровка,NOUN,gen. pl. as lemma
+блесток,NOUN,,replace,блёстка,NOUN,gen. pl. as lemma
+челок,NOUN,,replace,чёлка,NOUN,gen. pl. as lemma
+лисичек,NOUN,,replace,лисичка,NOUN,gen. pl. as lemma
+замен,NOUN,,replace,замена,NOUN,gen. pl. as lemma
+баллад,NOUN,,replace,баллада,NOUN,gen. pl. as lemma
+дверец,NOUN,,replace,дверца,NOUN,gen. pl. as lemma
+ват,NOUN,,replace,вата,NOUN,gen. pl. as lemma
+зёрен,NOUN,,replace,зерно,NOUN,gen. pl. as lemma
+аминогрупп,NOUN,,replace,аминогруппа,NOUN,gen. pl. as lemma
+горелок,NOUN,,replace,горелка,NOUN,gen. pl. as lemma
+эстрад,NOUN,,replace,эстрада,NOUN,gen. pl. as lemma
+верб,NOUN,,replace,верба,NOUN,gen. pl. as lemma
+сальс,NOUN,,replace,сальса,NOUN,gen. pl. as lemma
+рассад,NOUN,,replace,рассада,NOUN,gen. pl. as lemma
+соек,NOUN,,replace,сойка,NOUN,gen. pl. as lemma
+сковородок,NOUN,,replace,сковородка,NOUN,gen. pl. as lemma
+штор,NOUN,,replace,штора,NOUN,gen. pl. as lemma
+сковород,NOUN,,replace,сковорода,NOUN,gen. pl. as lemma
+сестер,NOUN,,replace,сестра,NOUN,gen. pl. as lemma
+калош,NOUN,,replace,калоша,NOUN,gen. pl. as lemma
+мозаик,NOUN,,replace,мозаика,NOUN,gen. pl. as lemma
+диет,NOUN,,replace,диета,NOUN,gen. pl. as lemma
+розеток,NOUN,,replace,розетка,NOUN,gen. pl. as lemma
+памяток,NOUN,,replace,памятка,NOUN,gen. pl. as lemma
+зарядок,NOUN,,replace,зарядка,NOUN,gen. pl. as lemma
+пап,NOUN,,replace,папа,NOUN,gen. pl. as lemma
+манг,NOUN,,replace,манга,NOUN,stem
+манги,NOUN,,replace,манга,NOUN,gen. sg. as lemma
+криптовалют,NOUN,,replace,криптовалюта,NOUN,stem
+экзопланет,NOUN,,replace,экзопланета,NOUN,gen. pl. as lemma
+микробиот,NOUN,,replace,микробиота,NOUN,stem
+сой,NOUN,,replace,соя,NOUN,stem
+мят,NOUN,,replace,мята,NOUN,stem
+хвой,NOUN,,replace,хвоя,NOUN,stem
+тар,NOUN,,replace,тара,NOUN,stem
+вишнь,NOUN,,replace,вишня,NOUN,stem
+пылец,NOUN,,replace,пыльца,NOUN,stem
+морошок,NOUN,,replace,морошка,NOUN,stem
+болячок,NOUN,,replace,болячка,NOUN,stem
+стрижок,NOUN,,replace,стрижка,NOUN,stem
+глажок,NOUN,,replace,глажка,NOUN,stem
+стирока,NOUN,,replace,стирка,NOUN,stem
+терк,NOUN,,replace,тёрка,NOUN,stem
+капляха,NOUN,,replace,капля,NOUN,stem
+короткометражкажа,NOUN,,replace,короткометражка,NOUN,stem
+техподержка,NOUN,,replace,техподдержка,NOUN,stem
+инстрюкция,NOUN,,replace,инструкция,NOUN,stem
+новизня,NOUN,,replace,новизна,NOUN,stem
+сансар,NOUN,,replace,сансара,NOUN,stem
+джив,NOUN,,replace,джива,NOUN,stem
+кодокусь,NOUN,,replace,кодокуси,NOUN,indeclinable
+халля,NOUN,,replace,халлю,NOUN,indeclinable
+осикац,NOUN,,replace,осикацу,NOUN,indeclinable
+антикаф,NOUN,,replace,антикафе,NOUN,indeclinable
+аним,NOUN,,replace,аниме,NOUN,indeclinable
+севич,NOUN,,replace,севиче,NOUN,indeclinable
+пхаль,NOUN,,replace,пхали,NOUN,indeclinable
+хачапура,NOUN,,replace,хачапури,NOUN,indeclinable
+резюм,NOUN,,replace,резюме,NOUN,indeclinable
+барист,NOUN,,replace,бариста,NOUN,indeclinable
+монстер,NOUN,,replace,монстера,NOUN,stem
+курьера,NOUN,,replace,курьер,NOUN,gen. sg. as lemma
+полета,NOUN,,replace,полёт,NOUN,gen. sg. as lemma
+видеозвонка,NOUN,,replace,видеозвонок,NOUN,gen. sg. as lemma
+приёма,NOUN,,replace,приём,NOUN,gen. sg. as lemma
+блокнота,NOUN,,replace,блокнот,NOUN,gen. sg. as lemma
+заголовка,NOUN,,replace,заголовок,NOUN,gen. sg. as lemma
+лимита,NOUN,,replace,лимит,NOUN,gen. sg. as lemma
+поплавка,NOUN,,replace,поплавок,NOUN,gen. sg. as lemma
+домофона,NOUN,,replace,домофон,NOUN,gen. sg. as lemma
+бланка,NOUN,,replace,бланк,NOUN,gen. sg. as lemma
+укропа,NOUN,,replace,укроп,NOUN,gen. sg. as lemma
+приза,NOUN,,replace,приз,NOUN,gen. sg. as lemma
+кофеина,NOUN,,replace,кофеин,NOUN,gen. sg. as lemma
+щитка,NOUN,,replace,щиток,NOUN,gen. sg. as lemma
+аскета,NOUN,,replace,аскет,NOUN,gen. sg. as lemma
+осьминога,NOUN,,replace,осьминог,NOUN,gen. sg. as lemma
+тайма,NOUN,,replace,тайм,NOUN,gen. sg. as lemma
+лектория,NOUN,,replace,лекторий,NOUN,gen. sg. as lemma
+отголоска,NOUN,,replace,отголосок,NOUN,gen. sg. as lemma
+упрека,NOUN,,replace,упрёк,NOUN,gen. sg. as lemma
+кораблика,NOUN,,replace,кораблик,NOUN,gen. sg. as lemma
+крика,NOUN,,replace,крик,NOUN,gen. sg. as lemma
+мультика,NOUN,,replace,мультик,NOUN,gen. sg. as lemma
+ярлыка,NOUN,,replace,ярлык,NOUN,gen. sg. as lemma
+насморка,NOUN,,replace,насморк,NOUN,gen. sg. as lemma
+антибиотика,NOUN,,replace,антибиотик,NOUN,gen. sg. as lemma
+микрофона,NOUN,,replace,микрофон,NOUN,gen. sg. as lemma
+шрифта,NOUN,,replace,шрифт,NOUN,gen. sg. as lemma
+иврита,NOUN,,replace,иврит,NOUN,gen. sg. as lemma
+актера,NOUN,,replace,актёр,NOUN,gen. sg. as lemma
+краника,NOUN,,replace,краник,NOUN,gen. sg. as lemma
+ужина,NOUN,,replace,ужин,NOUN,gen. sg. as lemma
+подзаголовка,NOUN,,replace,подзаголовок,NOUN,gen. sg. as lemma
+ремешка,NOUN,,replace,ремешок,NOUN,gen. sg. as lemma
+шалаша,NOUN,,replace,шалаш,NOUN,gen. sg. as lemma
+щелчка,NOUN,,replace,щелчок,NOUN,gen. sg. as lemma
+киоска,NOUN,,replace,киоск,NOUN,gen. sg. as lemma
+поручна,NOUN,,replace,поручень,NOUN,stem
+сверла,NOUN,,replace,сверло,NOUN,plural as lemma
+тазика,NOUN,,replace,тазик,NOUN,gen. sg. as lemma
+толчка,NOUN,,replace,толчок,NOUN,gen. sg. as lemma
+кремля,NOUN,,replace,кремль,NOUN,gen. sg. as lemma
+шурупа,NOUN,,replace,шуруп,NOUN,gen. sg. as lemma
+рачка,NOUN,,replace,рачок,NOUN,gen. sg. as lemma
+моллюска,NOUN,,replace,моллюск,NOUN,gen. sg. as lemma
+зимородка,NOUN,,replace,зимородок,NOUN,gen. sg. as lemma
+цирка,NOUN,,replace,цирк,NOUN,gen. sg. as lemma
+рока,NOUN,,replace,рок,NOUN,gen. sg. as lemma
+котика,NOUN,,replace,котик,NOUN,gen. sg. as lemma
+перекура,NOUN,,replace,перекур,NOUN,gen. sg. as lemma
+посева,NOUN,,replace,посев,NOUN,gen. sg. as lemma
+лесопарка,NOUN,,replace,лесопарк,NOUN,gen. sg. as lemma
+лотка,NOUN,,replace,лоток,NOUN,gen. sg. as lemma
+камешка,NOUN,,replace,камешек,NOUN,gen. sg. as lemma
+комочка,NOUN,,replace,комочек,NOUN,gen. sg. as lemma
+порога,NOUN,,replace,порог,NOUN,gen. sg. as lemma
+гардероба,NOUN,,replace,гардероб,NOUN,gen. sg. as lemma
+шарфа,NOUN,,replace,шарф,NOUN,gen. sg. as lemma
+мешочка,NOUN,,replace,мешочек,NOUN,gen. sg. as lemma
+водохранилища,NOUN,,replace,водохранилище,NOUN,gen. sg. as lemma
+дубля,NOUN,,replace,дубль,NOUN,gen. sg. as lemma
+заряда,NOUN,,replace,заряд,NOUN,gen. sg. as lemma
+бортика,NOUN,,replace,бортик,NOUN,gen. sg. as lemma
+круассана,NOUN,,replace,круассан,NOUN,gen. sg. as lemma
+чат-бота,NOUN,,replace,чат-бот,NOUN,gen. sg. as lemma
+рок-клуба,NOUN,,replace,рок-клуб,NOUN,gen. sg. as lemma
+метаанализа,NOUN,,replace,метаанализ,NOUN,gen. sg. as lemma
+ледобура,NOUN,,replace,ледобур,NOUN,gen. sg. as lemma
+ледоступа,NOUN,,replace,ледоступ,NOUN,gen. sg. as lemma
+электрощитка,NOUN,,replace,электрощиток,NOUN,gen. sg. as lemma
+биткоина,NOUN,,replace,биткоин,NOUN,gen. sg. as lemma
+крем-супа,NOUN,,replace,крем-суп,NOUN,gen. sg. as lemma
+видеоурка,NOUN,,replace,видеоурок,NOUN,stem
+перевыпка,NOUN,,replace,перевыпуск,NOUN,stem
+фотоальбо,NOUN,,replace,фотоальбом,NOUN,stem
+семестро,NOUN,,replace,семестр,NOUN,stem
+оригиналь,NOUN,,replace,оригинал,NOUN,stem
+календар,NOUN,,replace,календарь,NOUN,stem
+календарем,NOUN,,replace,календарь,NOUN,ins. as lemma
+царем,NOUN,,replace,царь,NOUN,ins. as lemma
+игом,NOUN,,replace,иго,NOUN,ins. as lemma
+рулема,NOUN,,replace,руль,NOUN,stem
+грила,NOUN,,replace,гриль,NOUN,stem
+терминали,NOUN,,replace,терминал,NOUN,stem
+ресепшенин,NOUN,,replace,ресепшен,NOUN,stem
+ванилье,NOUN,,replace,ваниль,NOUN,stem
+крайва,NOUN,,replace,край,NOUN,stem
+жильд,NOUN,,replace,жилец,NOUN,stem
+сорнякин,NOUN,,replace,сорняк,NOUN,stem
+воробейе,NOUN,,replace,воробей,NOUN,stem
+дятл,NOUN,,replace,дятел,NOUN,stem
+бобр,NOUN,,replace,бобёр,NOUN,stem
+водов,NOUN,,replace,водоём,NOUN,stem
+водова,NOUN,,replace,водоём,NOUN,stem
+слоева,NOUN,,replace,слой,NOUN,stem
+гед,NOUN,,replace,лёд,NOUN,«Лёд» misread
+блка,NOUN,,replace,ёлка,NOUN,«ёлка» misread
+медард,NOUN,,replace,мёд,NOUN,«мёд» misread
+менделевие,NOUN,,replace,менделевий,NOUN,stem
+скандия,NOUN,,replace,скандий,NOUN,gen. sg. as lemma
+сёлах,NOUN,,replace,село,NOUN,loc. pl. as lemma
+улове,NOUN,,replace,улов,NOUN,loc. sg. as lemma
+полотное,NOUN,,replace,полотно,NOUN,stem
+застолие,NOUN,,replace,застолье,NOUN,spelling
+безденеж,NOUN,,replace,безденежье,NOUN,stem
+полгод,NOUN,,replace,полгода,NOUN,stem
+полмесяц,NOUN,,replace,полмесяца,NOUN,stem
+полведр,NOUN,,replace,полведра,NOUN,stem
+полквартир,NOUN,,replace,полквартиры,NOUN,stem
+пол-литр,NOUN,,replace,пол-литра,NOUN,stem
+полусекунда,NOUN,,replace,полсекунды,NOUN,stem
+сим-карт,NOUN,,replace,сим-карта,NOUN,stem
+билингво,NOUN,,replace,билингв,NOUN,stem
+тихонь,NOUN,,replace,тихоня,NOUN,stem
+зуль,NOUN,,drop,,,fragment of «зуль-хиджа» (month name)
+хиджа,NOUN,,drop,,,fragment of «зуль-хиджа» (month name)
+нон,NOUN,,drop,,,fragment of «персона нон грата»
+грата,NOUN,,drop,,,fragment of «персона нон грата»
+новел,NOUN,,replace,лайт-новел,NOUN,fragment of «лайт-новел»
+-новать,VERB,,drop,,,fragment of «лайт-новел»
+демкомпостел,NOUN,,drop,,,fragment of a place name
+раз-два,NOUN,,drop,,,counting chant
+северый,ADJ,,drop,,,compound prefix fragment
+финный,ADJ,,drop,,,compound prefix fragment
+владимирый,ADJ,,drop,,,compound prefix fragment
+восточно,ADJ,,drop,,,compound prefix fragment
+ноябре–декабрь,NOUN,,drop,,,range written with a dash
+печена,NOUN,,replace,печь,VERB,«печём»
+режь,NOUN,,replace,резать,VERB,imperative
+месь,NOUN,,replace,месить,VERB,imperative
+подклеим,NOUN,,replace,подклеить,VERB,«подклеим»
+прошье,NOUN,,replace,прошить,VERB,«прошьём»
+экономль,NOUN,,replace,экономить,VERB,«экономлю»
+резок,NOUN,,replace,резкий,ADJ,short form «резок»
+рыбой,ADJ,,replace,рыба,NOUN,«Рыбой»
+содержимый,NOUN,,replace,содержимое,NOUN,substantive
+ведущая,NOUN,,replace,ведущий,NOUN,substantive
+кондитерская,ADJ,,replace,кондитерский,ADJ,«кондитерскую фабрику»
+эстрадной,ADJ,,replace,эстрадный,ADJ,case form as lemma
+луковой,ADJ,,replace,луковый,ADJ,case form as lemma
+бежевой,ADJ,,replace,бежевый,ADJ,case form as lemma
+упрямой,ADJ,,replace,упрямый,ADJ,case form as lemma
+дебетовой,ADJ,,replace,дебетовый,ADJ,case form as lemma
+щипковой,ADJ,,replace,щипковый,ADJ,case form as lemma
+жестовой,ADJ,,replace,жестовый,ADJ,case form as lemma
+березовой,ADJ,,replace,берёзовый,ADJ,case form as lemma
+блошин,ADJ,,replace,блошиный,ADJ,stem
+прав,ADJ,,replace,правый,ADJ,short form
+травяный,ADJ,,replace,травяной,ADJ,ending
+льняный,ADJ,,replace,льняной,ADJ,ending
+торфяный,ADJ,,replace,торфяной,ADJ,ending
+выхлопный,ADJ,,replace,выхлопной,ADJ,ending
+расписный,ADJ,,replace,расписной,ADJ,ending
+курьий,ADJ,,replace,курий,ADJ,«курьих ножках»
+каримь,NOUN,,replace,карий,ADJ,«карими»
+надеженный,ADJ,,replace,надёжный,ADJ,short form «надёжен»
+изношный,ADJ,,replace,изношенный,ADJ,short form «изношен»
+рассеяный,ADJ,,replace,рассеянный,ADJ,short form «рассеян»
+восточнославяк,ADJ,,replace,восточнославянский,ADJ,stem
+пятисотрублевый,ADJ,,replace,пятисотрублёвый,ADJ,ё
+метавселенный,ADJ,,replace,метавселенная,NOUN,noun
+трехстый,ADJ,,replace,триста,NUM,«трёхстах»
+пятнадцатий,ADJ,,replace,пятнадцать,NUM,«пятнадцатью»
+шестисот,NUM,,replace,шестьсот,NUM,gen. as lemma
+девяноста,NUM,,replace,девяносто,NUM,gen. as lemma
+усточиво,ADV,,replace,устойчиво,ADV,«устойчивее»
+серьнз,ADV,,replace,серьёзно,ADV,«Серьёзно»
+спросенно,ADV,,replace,упрощённо,ADV,«упрощённо»
+хородо,ADV,,replace,часто,ADV,«почаще»
+время-то,ADV,,replace,время,NOUN,particle -то
+оттуда-то,ADV,,replace,оттуда,ADV,particle -то
+воистина,NOUN,,replace,воистину,ADV,«Воистину»
+наташенька,NOUN,,replace,наташа,PROPN,diminutive of a name
+эпикур,NOUN,,replace,эпикур,PROPN,person name
+нозик,NOUN,,replace,нозик,PROPN,person name
+критий,NOUN,,replace,критий,PROPN,dialogue title
+ботвинник2,PROPN,,replace,ботвинник,PROPN,footnote digit glued
+прить,VERB,,replace,привет,INTJ,«Привет»
+привет,VERB,,replace,привет,INTJ,«Привет»
+подчеркнить,VERB,,replace,подчеркнуть,VERB,
+гудить,VERB,,replace,гудеть,VERB,
+вымышить,VERB,,replace,вымыслить,VERB,
+приобрить,VERB,,replace,приобрести,VERB,
+звести,VERB,,replace,звать,VERB,«зовёт»
+зов,VERB,,replace,звать,VERB,«зову»
+опишать,VERB,,replace,описать,VERB,
+нанмить,VERB,,replace,нажать,VERB,
+липать,VERB,,replace,липнуть,VERB,
+разать,VERB,,replace,разогреть,VERB,
+мнеться,VERB,,replace,мяться,VERB,
+шучать,VERB,,replace,шутить,VERB,
+воскрести,VERB,,replace,воскреснуть,VERB,«воскресе» (archaic)
+указить,VERB,,replace,указать,VERB,
+чисать,VERB,,replace,чистить,VERB,
+чистеть,VERB,,replace,чистить,VERB,
+проспасти,VERB,,replace,проспать,VERB,
+влечить,VERB,,replace,увлечь,VERB,
+увлечеть,VERB,,replace,увлечь,VERB,
+испорчить,VERB,,replace,испортить,VERB,
+набереть,VERB,,replace,набрать,VERB,
+набрить,VERB,,replace,набрать,VERB,
+плодлодировать,VERB,,replace,зааплодировать,VERB,
+рассеться,VERB,,replace,рассесться,VERB,
+мещаться,VERB,,replace,помещаться,VERB,
+измереть,VERB,,replace,измерить,VERB,
+разбереться,VERB,,replace,разобраться,VERB,
+хорговаться,VERB,,replace,поторговаться,VERB,
+продиковать,VERB,,replace,продиктовать,VERB,
+слепать,VERB,,replace,слепить,VERB,
+внесрить,VERB,,replace,внедрить,VERB,
+оживлеть,VERB,,replace,оживить,VERB,
+дочествать,VERB,,replace,дочитывать,VERB,
+лепать,VERB,,replace,лепить,VERB,
+полезти,VERB,,replace,полезть,VERB,
+переглядывать,VERB,,replace,переглядываться,VERB,
+обновлить,VERB,,replace,обновить,VERB,
+погребить,VERB,,replace,погрести,VERB,
+промократь,VERB,,replace,промокнуть,VERB,
+промочь,VERB,,replace,промокнуть,VERB,«промокла»
+возобновиеть,VERB,,replace,возобновить,VERB,
+клюсти,VERB,,replace,клевать,VERB,
+дерать,VERB,,replace,дёргаться,VERB,«дёргается»
+прокруть,VERB,,replace,прокрутить,VERB,
+налеть,VERB,,replace,налить,VERB,
+протрить,VERB,,replace,протереть,VERB,
+протрать,VERB,,replace,протереть,VERB,
+пришлить,VERB,,replace,прислать,VERB,
+поврежить,VERB,,replace,повредить,VERB,
+подсыть,VERB,,replace,подсыпать,VERB,
+обомнить,VERB,,replace,обмять,VERB,
+сформать,VERB,,replace,сформовать,VERB,
+срежать,VERB,,replace,срезать,VERB,
+собердуться,VERB,,replace,собраться,VERB,
+скить,VERB,,replace,скинуть,VERB,
+подить,VERB,,replace,подать,VERB,«подам»
+пригаться,VERB,,replace,пригнуться,VERB,
+укросться,VERB,,replace,укрыться,VERB,
+высыть,VERB,,replace,высыпать,VERB,
+провазти,VERB,,replace,проверить,VERB,
+вдать,VERB,,replace,вдавить,VERB,
+прибять,VERB,,replace,прибить,VERB,
+ришовать,VERB,,replace,рисовать,VERB,
+дселять,VERB,,replace,подселять,VERB,
+плесать,VERB,,replace,плескать,VERB,
+замотить,VERB,,replace,замочить,VERB,
+размотить,VERB,,replace,размочить,VERB,
+скорбить,VERB,,replace,скорбеть,VERB,
+сочесться,VERB,,replace,счесться,VERB,
+сорыться,VERB,,replace,сорваться,VERB,
+хоротать,VERB,,replace,хохотать,VERB,
+улязаться,VERB,,replace,улечься,VERB,
+подбереть,VERB,,replace,подобрать,VERB,
+подколить,VERB,,replace,подколоть,VERB,
+встанить,VERB,,replace,встать,VERB,
+загонить,VERB,,replace,загнать,VERB,
+ночовать,VERB,,replace,ночевать,VERB,
+прокипять,VERB,,replace,прокипятить,VERB,
+испекать,VERB,,replace,испечь,VERB,
+растегнуть,VERB,,replace,расстегнуть,VERB,spelling
+закопчить,VERB,,replace,закоптить,VERB,
+пебть,VERB,,replace,петь,VERB,
+покинить,VERB,,replace,покинуть,VERB,
+верниться,VERB,,replace,вернуться,VERB,
+ловь,VERB,,replace,ловить,VERB,«Ловлю на слове»
+ловля,VERB,,replace,ловить,VERB,«ловлю»
+смортить,VERB,,replace,сморщить,VERB,
+глодеть,VERB,,replace,глохнуть,VERB,
+сердаться,VERB,,replace,сердиться,VERB,
+колеть,VERB,,replace,колоть,VERB,«колет»
+пододить,VERB,,replace,подождать,VERB,
+наутиться,VERB,,replace,научиться,VERB,
+принотать,VERB,,replace,приносить,VERB,
+взрыться,VERB,,replace,взорваться,VERB,
+иблкать,VERB,,replace,щёлкать,VERB,
+жужить,VERB,,replace,жужжать,VERB,
+взреять,VERB,,replace,взбить,VERB,
+смать,VERB,,replace,смазать,VERB,
+растекться,VERB,,replace,растечься,VERB,
+переворачить,VERB,,replace,переворачивать,VERB,
+мерзти,VERB,,replace,мёрзнуть,VERB,
+сповать,VERB,,replace,спеть,VERB,
+разаться,VERB,,replace,разуться,VERB,
+терыть,VERB,,replace,тереть,VERB,«трут»
+треблять,VERB,,replace,потреблять,VERB,
+созванивать,VERB,,replace,созваниваться,VERB,
+сложать,VERB,,replace,сложить,VERB,
+разберать,VERB,,replace,разобрать,VERB,
+пекать,VERB,,replace,печь,VERB,«пеку»
+зависти,VERB,,replace,зависнуть,VERB,«завис»
+чести,VERB,,replace,чесаться,VERB,«чешутся»
+закрути,VERB,,replace,закрутить,VERB,imperative as lemma
+прикрути,VERB,,replace,прикрутить,VERB,imperative as lemma
+класть,NOUN,,replace,класть,VERB,«клади»
+поросль,VERB,,replace,порасти,VERB,«поросли лесом»
+повести,NOUN,,replace,повесть,NOUN,«повести»
+поверь,NOUN,,replace,поверье,NOUN,«поверью»
+чуть,NOUN,,replace,чутьё,NOUN,«чутьё»
+уважать,ADJ,,replace,уважаемый,ADJ,
+управлять,ADJ,,replace,управляющий,ADJ,
+дозволить,ADJ,,replace,дозволенный,ADJ,
+сопутствовать,ADJ,,replace,сопутствующий,ADJ,
+предполагать,ADJ,,replace,предполагаемый,ADJ,
+пугать,ADJ,,replace,пугающий,ADJ,
+пережить,ADJ,,replace,пережитый,ADJ,
+начинать,ADJ,,replace,начинающий,ADJ,
+быть,ADJ,,replace,бывший,ADJ,
+блестеть,ADJ,,replace,блестящий,ADJ,
+лысеть,ADJ,,replace,лысеющий,ADJ,
+подходить,ADJ,,replace,подходящий,ADJ,
+быстрорать,VERB,,replace,быстрорастущий,ADJ,
+недоказать,VERB,,replace,недоказанный,ADJ,
+общеустановить,VERB,,replace,общеустановленный,ADJ,
+слабовить,VERB,,replace,слабовидящий,NOUN,substantive
+привередлить,VERB,,replace,привередливый,ADJ,short form
+застенчить,VERB,,replace,застенчивый,ADJ,short form
+кисловатый,VERB,,replace,кисловатый,ADJ,short form
+сытый,VERB,,replace,сытый,ADJ,
+жаропонижающее,VERB,,replace,жаропонижающий,ADJ,
+доступный,VERB,,replace,доступный,ADJ,short form
+заметный,VERB,,replace,заметный,ADJ,short form
+показательный,VERB,,replace,показательный,ADJ,short form
+обеденный,VERB,,replace,обеденный,ADJ,not a participle
+основополагающий,VERB,,replace,основополагающий,ADJ,not a participle
+семьдесят,ADV,,replace,семьдесят,NUM,
+навынос,NOUN,,replace,навынос,ADV,
+напоказ,NOUN,,replace,напоказ,ADV,
+босиком,NOUN,,replace,босиком,ADV,
+итого,NOUN,,replace,итого,ADV,
+полдня,ADV,,replace,полдня,NOUN,
+электрический,NOUN,,replace,электрический,ADJ,all-caps heading
+посетитель,ADJ,,replace,посетитель,NOUN,all-caps heading
+кое-что,NOUN,,replace,кое-что,PRON,
+не,VERB,,replace,не,PART,
+парикмахерская,ADJ,,replace,парикмахерская,NOUN,
+булочная,ADJ,,replace,булочная,NOUN,
+ванный,NOUN,,replace,ванная,NOUN,
+кривая,ADJ,,replace,кривой,ADJ,
+наличные,ADJ,,replace,наличные,NOUN,«наличными»
+мокрый,ADV,,replace,мокро,ADV,
+платный,ADV,,replace,платно,ADV,
+маяковский,ADJ,,replace,маяковская,PROPN,metro station
+блоггер,NOUN,,replace,блогер,NOUN,spelling
+осы,NOUN,,replace,оса,NOUN,plural as lemma
+молекулярный,ADV,,replace,молекулярно,ADV,

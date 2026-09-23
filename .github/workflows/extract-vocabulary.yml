@@ -9,6 +9,9 @@ on:
       - "data/generated_texts/passages/**"
       - "scripts/extract_vocabulary_stanza.py"
       - "scripts/classify_vocabulary.py"
+      - "scripts/lemma_corrections.py"
+      - "data/lemma_corrections.csv"
+      - "tests/**"
       - ".github/workflows/extract-vocabulary.yml"
 
 permissions:
@@ -42,7 +45,12 @@ jobs:
             ${{ runner.os }}-stanza-ru-
 
       - name: Install Python dependencies
-        run: python -m pip install "stanza==1.14.0" "wordfreq==3.1.1"
+        run: python -m pip install "stanza==1.14.0" "wordfreq==3.1.1" "pytest"
+
+      # Why before extraction: a malformed correction table would silently
+      # corrupt both regenerated CSVs, so fail fast instead.
+      - name: Test lemma correction table
+        run: python -m pytest -q tests
 
       - name: Ensure Russian models are available
         run: |

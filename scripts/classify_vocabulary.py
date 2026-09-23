@@ -33,6 +33,7 @@ from pathlib import Path
 from wordfreq import zipf_frequency
 
 from extract_vocabulary_stanza import StanzaLemmatizer
+from lemma_corrections import CorrectedLemmatizer
 
 
 VALID_CLASSES = {"everyday", "general", "specialized"}
@@ -223,7 +224,9 @@ def main() -> None:
     bucket_counts: dict[tuple[str, str], Counter[str]] = defaultdict(Counter)
     categories: dict[tuple[str, str], set[str]] = defaultdict(set)
 
-    lemmatizer = StanzaLemmatizer()
+    # Why corrected: keys must match extracted_vocabulary_stanza.csv, which
+    # is produced through the same correction layer.
+    lemmatizer = CorrectedLemmatizer(StanzaLemmatizer())
     passage_paths = sorted(args.passages_dir.glob("*.txt"))
     for i, path in enumerate(passage_paths, start=1):
         if path.name not in manifest:

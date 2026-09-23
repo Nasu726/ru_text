@@ -86,6 +86,26 @@
   読まない(後述)。
 - `scripts/` — 語彙抽出用のスクリプト
 - `extracted_vocabulary_stanza.csv` — 全 `passages/*.txt` から Stanza で再生成する語彙集計。\n  GitHub Actions は差分追記ではなく毎回全パッセージを再処理してこのファイルを完全上書きする。\n  そのため本文の追加・修正・削除があっても、過去分の二重計上や古い集計の残留を避けられる。\n- `vocabulary_classification.csv` — 語彙整理用の粗い分類表。列は `lemma,upos,lexical_class` の3つだけで、\n  `lexical_class` は `everyday`(日常語彙) / `general`(一般語彙) / `specialized`(専門語彙) の3値。\n  初回は出現トピックの種類と一般ロシア語での使用頻度を補助情報として自動分類するが、重要度や\n  CEFRを推定するものではない。以後のActionsでは既存ラベルを保持し、新しく抽出された語だけを\n  自動分類するため、人間が後から直した分類は上書きされない。\n
+## Stanza補正レイヤー
+
+Stanzaのロシア語解析には、未知語・命令形・格変化形・`ё`を含む語などで、
+非語のlemma、語幹だけのlemma、誤ったUPOSが混じることがある。
+生成CSVを直接手修正すると次回Actionsで消えるため、
+`data/lemma_corrections.csv` を補正の正本とする。
+
+- `scripts/lemma_corrections.py` がStanza出力直後に補正を適用する。
+- 抽出と分類の両方が同じ補正器を通るため、`(lemma, upos)` のキーがずれない。
+- 補正表は `replace` または `drop` の明示ルールだけを持つ。
+- 数字だけのトークン、年、日付、Latin-onlyのブランド名・略号など、
+  ロシア語語彙として扱わない非語彙トークンもこの層で除外する。
+- `scripts/audit_lemmas_pymorphy.py` はpymorphy3を独立した第二意見として使い、
+  新規の怪しいlemma候補を列挙する保守用ツールである。自動修正は行わない。
+- 補正表の重複・連鎖置換・不正actionなどは `tests/test_lemma_corrections.py` で検査し、
+  Actionsは語彙再生成の前にこのテストを実行する。
+
+補正は「Stanzaよりpymorphy3を常に正しいとみなす」仕組みではなく、
+実際に確認した誤解析だけを明示的に直す保守層である。
+
 ## 抽出結果の形式
 
 `scripts/extract_vocabulary_stanza.py` の出力は

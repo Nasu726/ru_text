@@ -94,6 +94,11 @@ from pathlib import Path
 
 import stanza
 
+# Why: Stanza's raw lemmas contain non-words and inconsistent ё spelling;
+# the correction layer (see lemma_corrections.py) fixes them before
+# aggregation so the CSV is not hand-edited (CI would overwrite it).
+from lemma_corrections import CorrectedLemmatizer
+
 
 def load_passages(passages_dir: Path) -> list[str]:
     """`passages_dir` 直下の *.txt ファイルを1つ1パッセージとして読み込む。
@@ -178,7 +183,7 @@ def main() -> None:
     args = parser.parse_args()
 
     print("[setup] Stanzaパイプラインを初期化中(初回はモデルダウンロードが発生します)...", file=sys.stderr)
-    lemmatizer = StanzaLemmatizer()
+    lemmatizer = CorrectedLemmatizer(StanzaLemmatizer())
     passages = load_passages(args.passages_dir)
     print(f"[input] {len(passages)} パッセージを読み込みました", file=sys.stderr)
 
