@@ -8,6 +8,7 @@ on:
     paths:
       - "data/generated_texts/passages/**"
       - "scripts/extract_vocabulary_stanza.py"
+      - "scripts/classify_vocabulary.py"
       - ".github/workflows/extract-vocabulary.yml"
 
 permissions:
@@ -40,8 +41,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-stanza-ru-
 
-      - name: Install Stanza
-        run: python -m pip install "stanza==1.14.0"
+      - name: Install Python dependencies
+        run: python -m pip install "stanza==1.14.0" "wordfreq==3.1.1"
 
       - name: Ensure Russian models are available
         run: |
@@ -56,7 +57,15 @@ jobs:
             data/generated_texts/passages \
             --out extracted_vocabulary_stanza.csv
 
-      - name: Validate generated CSV
+      - name: Classify vocabulary
+        run: |
+          python scripts/classify_vocabulary.py \
+            data/generated_texts/passages \
+            --manifest data/generated_texts/manifest.csv \
+            --extracted extracted_vocabulary_stanza.csv \
+            --out vocabulary_classification.csv
+
+      - name: Validate generated CSVs
         run: |
           python - <<'PY'
           import csv
@@ -77,15 +86,30 @@ jobs:
           if rows == 0:
               raise SystemExit("generated CSV contains no vocabulary rows")
           print(f"validated {rows} vocabulary rows")
+
+          classification = Path("vocabulary_classification.csv")
+          with classification.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              if reader.fieldnames != ["lemma", "upos", "lexical_class"]:
+                  raise SystemExit(f"unexpected classification header: {reader.fieldnames!r}")
+              class_rows = list(reader)
+
+          valid = {"everyday", "general", "specialized"}
+          invalid = [r for r in class_rows if r["lexical_class"] not in valid]
+          if invalid:
+              raise SystemExit(f"invalid lexical classes: {invalid[:5]!r}")
+          if not class_rows:
+              raise SystemExit("classification CSV contains no rows")
+          print(f"validated {len(class_rows)} classification rows")
           PY
 
       - name: Commit regenerated vocabulary
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add extracted_vocabulary_stanza.csv
+          git add extracted_vocabulary_stanza.csv vocabulary_classification.csv
           if git diff --cached --quiet; then
-            echo "Vocabulary CSV is already up to date."
+            echo "Vocabulary CSVs are already up to date."
             exit 0
           fi
           git commit -m "Update extracted vocabulary"

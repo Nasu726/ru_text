@@ -85,10 +85,7 @@
   (列: `id,category,topic,register,filename`)。抽出スクリプトはこのファイルを
   読まない(後述)。
 - `scripts/` — 語彙抽出用のスクリプト
-- `extracted_vocabulary_stanza.csv` — 全 `passages/*.txt` から Stanza で再生成する語彙集計。
-  GitHub Actions は差分追記ではなく毎回全パッセージを再処理してこのファイルを完全上書きする。
-  そのため本文の追加・修正・削除があっても、過去分の二重計上や古い集計の残留を避けられる。
-
+- `extracted_vocabulary_stanza.csv` — 全 `passages/*.txt` から Stanza で再生成する語彙集計。\n  GitHub Actions は差分追記ではなく毎回全パッセージを再処理してこのファイルを完全上書きする。\n  そのため本文の追加・修正・削除があっても、過去分の二重計上や古い集計の残留を避けられる。\n- `vocabulary_classification.csv` — 語彙整理用の粗い分類表。列は `lemma,upos,lexical_class` の3つだけで、\n  `lexical_class` は `everyday`(日常語彙) / `general`(一般語彙) / `specialized`(専門語彙) の3値。\n  初回は出現トピックの種類と一般ロシア語での使用頻度を補助情報として自動分類するが、重要度や\n  CEFRを推定するものではない。以後のActionsでは既存ラベルを保持し、新しく抽出された語だけを\n  自動分類するため、人間が後から直した分類は上書きされない。\n
 ## 抽出結果の形式
 
 `scripts/extract_vocabulary_stanza.py` の出力は
