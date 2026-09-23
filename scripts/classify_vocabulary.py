@@ -91,6 +91,7 @@ FUNCTION_UPOS = {
     "DET",
     "PART",
     "PRON",
+    "NUM",
     "SCONJ",
 }
 
