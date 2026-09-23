@@ -1,0 +1,93 @@
+name: Extract vocabulary
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/generated_texts/passages/**"
+      - "scripts/extract_vocabulary_stanza.py"
+      - ".github/workflows/extract-vocabulary.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-vocabulary-main
+  cancel-in-progress: true
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Cache Stanza Russian models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/stanza
+          key: ${{ runner.os }}-stanza-ru-1.14.0
+          restore-keys: |
+            ${{ runner.os }}-stanza-ru-
+
+      - name: Install Stanza
+        run: python -m pip install "stanza==1.14.0"
+
+      - name: Ensure Russian models are available
+        run: |
+          python - <<'PY'
+          import stanza
+          stanza.download("ru", processors="tokenize,pos,lemma", verbose=False)
+          PY
+
+      - name: Extract vocabulary from all passages
+        run: |
+          python scripts/extract_vocabulary_stanza.py \
+            data/generated_texts/passages \
+            --out extracted_vocabulary_stanza.csv
+
+      - name: Validate generated CSV
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          path = Path("extracted_vocabulary_stanza.csv")
+          if not path.exists() or path.stat().st_size == 0:
+              raise SystemExit("extracted_vocabulary_stanza.csv was not generated")
+
+          with path.open(encoding="utf-8", newline="") as f:
+              reader = csv.reader(f)
+              header = next(reader, None)
+              expected = ["lemma", "upos", "verb_form", "case_counts", "example_wordform", "count"]
+              if header != expected:
+                  raise SystemExit(f"unexpected header: {header!r}")
+              rows = sum(1 for _ in reader)
+
+          if rows == 0:
+              raise SystemExit("generated CSV contains no vocabulary rows")
+          print(f"validated {rows} vocabulary rows")
+          PY
+
+      - name: Commit regenerated vocabulary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add extracted_vocabulary_stanza.csv
+          if git diff --cached --quiet; then
+            echo "Vocabulary CSV is already up to date."
+            exit 0
+          fi
+          git commit -m "Update extracted vocabulary"
+          git push

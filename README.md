@@ -85,6 +85,9 @@
   (列: `id,category,topic,register,filename`)。抽出スクリプトはこのファイルを
   読まない(後述)。
 - `scripts/` — 語彙抽出用のスクリプト
+- `extracted_vocabulary_stanza.csv` — 全 `passages/*.txt` から Stanza で再生成する語彙集計。
+  GitHub Actions は差分追記ではなく毎回全パッセージを再処理してこのファイルを完全上書きする。
+  そのため本文の追加・修正・削除があっても、過去分の二重計上や古い集計の残留を避けられる。
 
 ## 抽出結果の形式
 
